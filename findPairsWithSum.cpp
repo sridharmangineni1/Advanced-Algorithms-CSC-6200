@@ -5,21 +5,20 @@
 using namespace std;
 
 vector<int> findPairsWithSum(vector<int>& nums, int targetSum) {
-    unordered_map<int, int> valueToIndexMap; // Map to store value and its index
+    unordered_map<int, int> valueToIndexMap;
 
     for (int currentIndex = 0; currentIndex < nums.size(); currentIndex++) {
-        int requiredValue = targetSum - nums[currentIndex]; // Calculate the required value
-
-        // Check if the required value exists in the map
+        int requiredValue = targetSum - nums[currentIndex];
+       
         if (valueToIndexMap.find(requiredValue) != valueToIndexMap.end()) {
-            return { valueToIndexMap[requiredValue], currentIndex }; // Return the indices
+            return { valueToIndexMap[requiredValue], currentIndex }; 
         }
 
-        // Store the current number's index in the map
+    
         valueToIndexMap[nums[currentIndex]] = currentIndex;
     }
 
-    return {}; // Return an empty vector if no pair is found
+    return {};
 }
 
 int main() {
